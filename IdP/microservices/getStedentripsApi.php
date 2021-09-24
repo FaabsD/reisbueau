@@ -27,4 +27,35 @@ class GetStedentripsApi {
 
         return $idc->decodeToken();
     }
+
+    public function getService() {
+        $this->geverifieerd = $this->checkToken();
+
+        if (!$this->geverifieerd) {
+            $this->returnData = array(
+                'message' => "Error: Unauthorized Request.",
+                'status' => '401',
+                'bearerToken' => $this->bearerToken,
+            );
+        } else {
+            $this->returnData = array(
+                'message' => "API Get Service uitgevoerd.",
+                'status' => '200',
+                'bearerToken' => $this->bearerToken,
+
+            );
+        }
+
+        header("HTTP/1.1 ". $this->returnData['status']);
+        header("Access-Control-Allow-Origin: *");
+        header("Content-Type:application/json;charset=UTF-8");
+        header("X-Content-Type-Options: nosniff");
+        header("Cache-Control: max-age=100");
+        echo json_encode($this->returnData);
+        exit();
+    }
 }
+
+// service uitvoeren
+$api = new GetStedentripsApi();
+$api->getService();

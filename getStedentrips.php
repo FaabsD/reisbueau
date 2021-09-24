@@ -11,7 +11,7 @@ $idp = new IdP($credentials);
 
 $token = $idp->getToken();
 
-$APIurl = "http://localhost/reisbureau/IdP/microservices/GetStedentripsApi.php";
+$APIurl = "http://localhost/reisbureau/IdP/microservices/getStedentripsApi.php";
 
 // creëer url resource
 $ch = curl_init($APIurl);
@@ -19,7 +19,7 @@ $ch = curl_init($APIurl);
 // set header options
 curl_setopt($ch, CURLOPT_HTTPAUTH, CURLAUTH_ANY);
 curl_setopt($ch, CURLOPT_USERPWD, "$username:$password");
-curl_setopt($ch, CURLOPT_HTTPHEADER, array('Authorization: Bearer '.$token));
+curl_setopt($ch, CURLOPT_HTTPHEADER, array("Authorization: Bearer ".$token));
 
 // post gegevens
 $curl_post_data = array(

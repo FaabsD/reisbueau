@@ -5,7 +5,7 @@ class IdP extends JWT {
     protected $bearerCredentials = "";
     protected $bearerToken = "";
     protected $credentials = "";
-    public function __contruct($bearerCredentials) {
+    public function __construct($bearerCredentials) {
         $this->bearerCredentials = $bearerCredentials;
     }
     public function getToken() {

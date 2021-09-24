@@ -6,7 +6,7 @@ class IdC extends JWT
     protected $bearerCredentials = "";
     protected $bearerToken = "";
 
-    public function __contruct($bearerToken, $bearerCredentials)
+    public function __construct($bearerToken, $bearerCredentials)
     {
         $this->bearerToken = $bearerToken;
         $this->bearerCredentials = $bearerCredentials;

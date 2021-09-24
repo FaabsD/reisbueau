@@ -1,12 +1,11 @@
 <?php
-include_once('../IdP.php');
+include_once('../IdC.php');
 class GetStedentripsApi {
     protected $bearerToken = "";
     protected $bearerCredentials = "";
     protected $returnData = "";
     protected $geverifieerd = "";
-    public function __constuct() {
-
+    public function __construct() {
     }
 
     public function checkToken() {
@@ -16,11 +15,11 @@ class GetStedentripsApi {
 
         $allHeaders = getallheaders();
         $authorization = $allHeaders['Authorization'];
-        list($type, $data) = explode(' ', $authorization, 2);
+        list($type, $data) = explode(" ", $authorization, 2);
         $this->bearerToken = $data;
 
         $this->bearerCredentials = array();
-        $this->bearerCredentials['username '] = $username;
+        $this->bearerCredentials['username'] = $username;
         $this->bearerCredentials['password'] = $password;
 
         $idc = new IdC($this->bearerToken, $this->bearerCredentials);
@@ -33,15 +32,15 @@ class GetStedentripsApi {
 
         if (!$this->geverifieerd) {
             $this->returnData = array(
-                'message' => "Error: Unauthorized Request.",
-                'status' => '401',
-                'bearerToken' => $this->bearerToken,
+                "message" => "Error: Unauthorized Request.",
+                "status" => '401',
+                "bearerToken" => $this->bearerToken,
             );
         } else {
             $this->returnData = array(
-                'message' => "API Get Service uitgevoerd.",
-                'status' => '200',
-                'bearerToken' => $this->bearerToken,
+                "message" => "API Get Service uitgevoerd.",
+                "status" => '200',
+                "bearerToken" => $this->bearerToken,
 
             );
         }
@@ -52,7 +51,7 @@ class GetStedentripsApi {
         header("X-Content-Type-Options: nosniff");
         header("Cache-Control: max-age=100");
         echo json_encode($this->returnData);
-        exit();
+        exit;
     }
 }
 

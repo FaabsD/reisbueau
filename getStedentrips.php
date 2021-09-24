@@ -37,4 +37,15 @@ curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 // run service request
 $response = curl_exec($ch);
 
+$resultStatus = curl_getinfo($ch);
+
+// decodeer de response in arrayvorm
+$decoded = json_decode($response, true);
+
+echo '<br>Message: ' . $decoded['message'];
+echo '<br>Status: ' . $decoded['status'];
+echo '<br>Bearer token: ' . $decoded['bearerToken'];
+
+curl_close($ch);
+
 

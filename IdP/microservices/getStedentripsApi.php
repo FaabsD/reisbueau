@@ -37,6 +37,7 @@ class GetStedentripsApi {
                 "bearerToken" => $this->bearerToken,
             );
         } else {
+            include 'includes/connection.php';
             $this->returnData = array(
                 "message" => "API Get Service uitgevoerd.",
                 "status" => '200',
